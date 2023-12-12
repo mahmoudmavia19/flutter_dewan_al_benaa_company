@@ -1,0 +1,46 @@
+name: dewan_al_benaa_company
+description: A new Flutter project.
+version: 1.0.0+1
+environment: 
+  sdk: '>=2.12.0 <3.0.0'
+dependencies: 
+  flutter: 
+    sdk: flutter
+  get: ^4.6.5
+  connectivity_plus: ^2.3.6
+  shared_preferences: ^2.0.15
+  cached_network_image: ^3.2.1
+  flutter_svg: ^1.1.6
+  intl: ^0.17.0
+  url_launcher: ^6.2.2
+  carousel_slider: ^4.2.1
+  dots_indicator: ^3.0.0
+  readmore: ^2.2.0
+  photo_view: ^0.14.0
+  flutter_staggered_animations: ^1.1.1
+dev_dependencies:
+  flutter_test: 
+    sdk: flutter
+flutter: 
+  uses-material-design: true
+  assets: 
+    - assets/
+    - assets/images/
+    - assets/images/al_shabili/
+    - assets/images/chamber_of_commerce/
+    - assets/images/the_cultural_center/
+    - assets/images/sea_front/
+    - assets/images/light_the_racket/
+    - assets/images/jubail_insulators/
+    - assets/images/al_nawras_villas/
+    - assets/images/al_khobar_and_shuaiba_halls/
+    - assets/images/certificates/
+    - assets/images/our_projects/
+    - assets/images/services/
+  fonts:
+    - family: Inter
+      fonts: 
+        - asset: assets/fonts/InterMedium.ttf
+          weight: 500
+        - asset: assets/fonts/InterRegular.ttf
+          weight: 400
