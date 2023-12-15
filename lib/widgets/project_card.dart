@@ -68,19 +68,20 @@ class ProjectCard extends StatelessWidget {
                                                       return Image.asset(
                                                         images[index],
                                                         width: 500.0,
-                                                        height: 500.0,
+                                                        height: 300.0,
                                                         fit: BoxFit.cover,);
                                                     },
                                                     options: CarouselOptions(
+                                                      height: 300.0,
                                                       initialPage: imageSelected ,
                                                       viewportFraction: 1.0,
                                                     )),
                                               width: 500.0,
-                                              height: 500.0,
+                                              height: 300.0,
                                             ),
                                             Container(
                                               width: 500.0,
-                                              height: 500.0,
+                                              height: 300.0,
                                               padding: EdgeInsets.symmetric(horizontal: 30.0),
                                               child: Row(
                                                 children: [
@@ -135,10 +136,11 @@ class ProjectCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
-                        height: 25.0,
+                        height: 30.0,
                         padding: EdgeInsets.symmetric(horizontal: 10.0),
                         color: Colors.blueAccent,
-                          child: Text('Design'.tr,style: TextStyle(color: Colors.white),textAlign: TextAlign.center,)),
+                          width: 80.0,
+                          child: Center(child: Text('Design'.tr,style: TextStyle(color: Colors.white),textAlign: TextAlign.center,))),
                     )
                       ]
                 ],

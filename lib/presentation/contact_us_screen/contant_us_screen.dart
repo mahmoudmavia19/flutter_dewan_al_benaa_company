@@ -2,7 +2,9 @@ import 'package:dewan_al_benaa_company/core/app_export.dart';
 import 'package:dewan_al_benaa_company/widgets/custom_app_bar.dart';
 import 'package:dewan_al_benaa_company/widgets/footer_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../../widgets/custom_drawable.dart';
+import '../home_screen/controller/home_controller.dart';
 
 class ContactUsScreen extends StatelessWidget {
   GlobalKey<FormState> _key = GlobalKey();
@@ -13,135 +15,157 @@ class ContactUsScreen extends StatelessWidget {
     return SelectionArea(
       child: Scaffold(
           drawer: CustomDrawable(),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: 300.0,width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        image: DecorationImage(image: AssetImage(ImageConstant.services),fit: BoxFit.cover,opacity: 0.6),
-                      ),
-                      child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Contact Us'.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 36.0),),
-                              SizedBox(height: 20.0,),
-                              Row(
-                                children: [
-                                  Text('Home  /'.tr,style: TextStyle(color: Colors.white70,fontWeight: FontWeight.bold,fontSize: 18.0),),
-                                  Text('  Contact Us'.tr,style: TextStyle(color: Colors.blueAccent,fontWeight: FontWeight.bold,fontSize: 18.0),),
-                                ],
+          body: Stack(
+            children: [
+              NotificationListener<ScrollNotification>(
+                onNotification: (notification) {
+                  Get.find<HomeController>().appBarUpdate(notification);
+                  return true;
+                },
+                child: SingleChildScrollView(
+                  child: AnimationLimiter(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 300.0,width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            image: DecorationImage(image: AssetImage(ImageConstant.services),fit: BoxFit.cover,opacity: 0.6),
+                          ),
+                          child: Center(
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                              ),
-                            ],
-                          )
-                      ),
-                    ),
-                    CustomAppBar()
-                  ],
-                ),
-                Wrap(
-                  children: [
-                    SizedBox(
-                      width: 500.0,
-                      height: 550.0,
-                      child: Card(
-                        margin: EdgeInsets.all(20.0),
-                        shape: RoundedRectangleBorder(side: BorderSide(color: Colors.blueAccent),borderRadius: BorderRadius.circular(15.0)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                            children: [
-                              Image.asset(ImageConstant.logo,width: 250.0,),
-                              SizedBox(height: 20.0,),
-                              Row(
                                 children: [
-                                  CircleAvatar(
-                                    backgroundColor: Colors.blueAccent,
-                                      foregroundColor: Colors.white,
-                                      child: Icon(Icons.email)),
-                                  SizedBox(width: 10.0,),
-                                  Text('DEWANALBENA@GMAIL.COM'),
+                                  Text('Contact Us'.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 36.0),),
+                                  SizedBox(height: 20.0,),
+                                  Row(
+                                    children: [
+                                      Text('Home'.tr,style: TextStyle(color: Colors.white70,fontWeight: FontWeight.bold,fontSize: 18.0),),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                        child: Text('/', style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18.0),),
+                                      ),
+                                      Text('Contact Us'.tr,style: TextStyle(color: Colors.blueAccent,fontWeight: FontWeight.bold,fontSize: 18.0),),
+                                    ],
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                  ),
                                 ],
-                              ),
-                              SizedBox(height: 20.0,),
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor: Colors.blueAccent,
-                                      foregroundColor: Colors.white,
-                                      child: Icon(Icons.phone)),
-                                  SizedBox(width: 10.0,),
-                                  Text('0138646000'),
-                                ],
-                              ),
-                              SizedBox(height: 20.0,),
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor: Colors.blueAccent,
-                                      foregroundColor: Colors.white,
-                                      child: Icon(Icons.phone)),
-                                  SizedBox(width: 10.0,),
-                                  Text('0552422000'),
-                                ],
-                              ),
-                              SizedBox(height: 20.0,),
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                      backgroundColor: Colors.blueAccent,
-                                      foregroundColor: Colors.white,
-                                      child: Icon(Icons.fax)),
-                                  SizedBox(width: 10.0,),
-                                  Text('0138646688'),
-                                ],
-                              ),
-                            ],
+                              )
                           ),
                         ),
-                      ),
-                    ),
-                    Form(
-                      key: _key,
-                      child: SizedBox(
-                        width: 500.0,
-                        child: Card(
-                          shape: RoundedRectangleBorder(side: BorderSide(color: Colors.blueAccent),borderRadius: BorderRadius.circular(15.0)),
-                          margin: EdgeInsets.all(20.0),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              children: [
-                                _textForm(_controllerName, Icons.person),
-                                _textForm(_controllerDes, Icons.description,lines: 5),
-                                SizedBox(
-                                  height: 20.0,
+                        Wrap(
+                          children: AnimationConfiguration.toStaggeredList(
+                              duration: Duration(seconds:2),
+                              childAnimationBuilder:(widget) => SlideAnimation(
+                                horizontalOffset: 50.0,
+                                child: FadeInAnimation(
+                                  child: widget,
                                 ),
-                                ElevatedButton(
-                                    onPressed: () {
-                                      if (_key.currentState!.validate()) {
-                                        sendEmail(_controllerName.text,
-                                           'DEWANALBENA@GMAIL.COM',
-                                            _controllerDes.text) ;
-                                      }
-                                    },
-                                    child: Text('Send'.tr))
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                                 ),
+                              children: [
+                                SizedBox(
+                                  width: 500.0,
+                                  height: 550.0,
+                                  child: Card(
+                                    margin: EdgeInsets.all(20.0),
+                                    shape: RoundedRectangleBorder(side: BorderSide(color: Colors.blueAccent),borderRadius: BorderRadius.circular(15.0)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: Column(
+                                        children: [
+                                          Image.asset(ImageConstant.logo,width: 250.0,),
+                                          SizedBox(height: 20.0,),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  backgroundColor: Colors.blueAccent,
+                                                  foregroundColor: Colors.white,
+                                                  child: Icon(Icons.email)),
+                                              SizedBox(width: 10.0,),
+                                              Text('DEWANALBENA@GMAIL.COM'),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20.0,),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  backgroundColor: Colors.blueAccent,
+                                                  foregroundColor: Colors.white,
+                                                  child: Icon(Icons.phone)),
+                                              SizedBox(width: 10.0,),
+                                              Text('0138646000'),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20.0,),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  backgroundColor: Colors.blueAccent,
+                                                  foregroundColor: Colors.white,
+                                                  child: Icon(Icons.phone)),
+                                              SizedBox(width: 10.0,),
+                                              Text('0552422000'),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20.0,),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                  backgroundColor: Colors.blueAccent,
+                                                  foregroundColor: Colors.white,
+                                                  child: Icon(Icons.fax)),
+                                              SizedBox(width: 10.0,),
+                                              Text('0138646688'),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Form(
+                                  key: _key,
+                                  child: SizedBox(
+                                    width: 500.0,
+                                    child: Card(
+                                      shape: RoundedRectangleBorder(side: BorderSide(color: Colors.blueAccent),borderRadius: BorderRadius.circular(15.0)),
+                                      margin: EdgeInsets.all(20.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Column(
+                                          children: [
+                                            _textForm(_controllerName, Icons.person),
+                                            _textForm(_controllerDes, Icons.description,lines: 5),
+                                            SizedBox(
+                                              height: 20.0,
+                                            ),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  if (_key.currentState!.validate()) {
+                                                    sendEmail(_controllerName.text,
+                                                        'DEWANALBENA@GMAIL.COM',
+                                                        _controllerDes.text) ;
+                                                  }
+                                                },
+                                                child: Text('Send'.tr))
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ])),
+                        FooterAppBar()
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-                FooterAppBar()
-              ],
-            ),
+              ),
+              CustomAppBar()
+            ],
           )),
     );
   }

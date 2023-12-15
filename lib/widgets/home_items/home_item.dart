@@ -35,7 +35,7 @@ class HomeItem extends  GetWidget<HomeController> {
             children: [
               SizedBox(
                 width:300.0,
-                child: Text('Welcome to '.tr+'co_name'.tr,
+                child: Text('Welcome to '.tr+'Dewan Al-Benaa Company'.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,fontSize: 36.0,

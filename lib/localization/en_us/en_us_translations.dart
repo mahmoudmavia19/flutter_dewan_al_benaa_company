@@ -10,6 +10,7 @@ final Map<String, String> enUs = {
   "lbl_add_to_cart": "Add To Cart",
   "lbl_green_apple": "Green Apple",
   "lbl_special_price": "Special price",
+  "Dewan Al-Benaa Company": "Dewan Al-Benaa Company" ,
   "co_name": "Dewan Al-Benaa Company" ,
   'al_shabili':' Al Shibely Tower',
   'chamber_of_commerce':'Eastern Chamber',
@@ -67,9 +68,14 @@ final Map<String, String> enUs = {
   'Send':'Send',
   'Please fill this box':'Please fill this box' ,
   'Please enter valid email':'Please enter valid email',
-  'language':'ع',
+  'language':'عربية',
   'Partners':'Partners',
   'read more':'read more',
-  'show less':'show less'
-
+  'show less':'show less',
+  'All Projects':'All Projects',
+  'Owner Type':'Owner Type',
+  'Owner':'Owner',
+  'Project Name':'Project Name',
+  'Investor':'Investor',
+  'Entity':'Entity',
 };

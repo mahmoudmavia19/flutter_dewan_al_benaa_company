@@ -64,9 +64,11 @@ class CustomCard extends GetWidget<ServicesController> {
                     SizedBox(height: 10.0,),
                     Column(
                       children: [
-                        ReadMoreText('${title}',
+                        ReadMoreText('${title}'.tr,
                           textAlign: TextAlign.center,
                           trimLines: 3,
+                          trimExpandedText: 'show less'.tr,
+                          trimCollapsedText :'read more'.tr,
                           trimMode: TrimMode.Line,
                           moreStyle: TextStyle(color: Colors.blueAccent,fontSize: 16.0),
                           lessStyle:  TextStyle(color: Colors.blueAccent,fontSize: 16.0),

@@ -25,13 +25,7 @@ class MainScreen extends GetWidget<HomeController> {
             children: [
               NotificationListener<ScrollNotification>(
                 onNotification: (notification) {
-                  if(notification is UserScrollNotification){
-                    if(notification.metrics.pixels>100.0){
-                      controller.floatButtonShow.value = true ;
-                    }else{
-                      controller.floatButtonShow.value = false ;
-                    }
-                  }
+                  controller.appBarUpdate(notification);
                   return true;
                 },
                 child: ListView.builder(

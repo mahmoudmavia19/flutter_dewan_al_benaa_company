@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 
 class CustomDrawable extends GetWidget<HomeController>{
 
+  Function()?onChangeLang ;
+
+  CustomDrawable({this.onChangeLang});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -26,7 +30,10 @@ class CustomDrawable extends GetWidget<HomeController>{
           ListTile(leading: Icon(Icons.alternate_email),
               onTap: () {Get.toNamed(AppRoutes.contactScreen);}, trailing: Icon(Icons.arrow_forward_ios,color: Colors.white,) ,title: Text('Contact Us'.tr)),
           ListTile(
-    leading:  Icon(Icons.language),onTap: () {-controller.changeLanguage();},trailing: Icon(Icons.arrow_forward_ios) ,title: Text('language'.tr)),
+    leading:  Icon(Icons.language),onTap: () {
+       controller.changeLanguage(context);
+       onChangeLang?.call();
+       },trailing: Icon(Icons.arrow_forward_ios) ,title: Text('language'.tr)),
           Divider(),
           ListTile(trailing: Icon(Icons.email,color: Colors.white70,) ,titleTextStyle: TextStyle(color: Colors.white70),title: Text('GMAIL : DEWANALBENA@GMAIL.COM',textDirection: TextDirection.ltr,)),
           ListTile(trailing: Icon(Icons.phone,color: Colors.white70,) ,titleTextStyle: TextStyle(color: Colors.white70),title: Text('TEL . 0138646000',textDirection: TextDirection.ltr)),

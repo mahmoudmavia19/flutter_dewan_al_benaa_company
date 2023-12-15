@@ -28,11 +28,11 @@ class ProjectsItem extends  GetWidget<ProjectsController> {
                     children: [
                       if(controller.searchMap.isEmpty)...[
                         for(var item in mapImages.keys)
-                          ProjectCard(itemKey: item,images:mapImages[item]??[],imageSelected:(mapImages[item]!.length - 1) ),
+                          ProjectCard(itemKey: item,images:mapImages[item]??[],imageSelected:0),
                       ],
                       if(controller.searchMap.isNotEmpty)...[
                         for(var item in controller.searchMap.keys)
-                          ProjectCard(itemKey: item,images:controller.searchMap[item]??[],imageSelected:(controller.searchMap[item]!.length - 1) ),
+                          ProjectCard(itemKey: item,images:controller.searchMap[item]??[],imageSelected:0 ),
                       ]
                     ]
                 ),

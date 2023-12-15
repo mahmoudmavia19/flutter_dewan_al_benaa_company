@@ -1,8 +1,8 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:get_storage/get_storage.dart';
 import 'core/app_export.dart';
 
 void main() async{
@@ -13,6 +13,7 @@ void main() async{
       DeviceOrientation.portraitUp,
     ]),
     PrefUtils().init(),
+    GetStorage.init(),
 
   ]).then((value) {
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
@@ -22,9 +23,7 @@ void main() async{
    });
     print('certificates count is ${certificates.length}');
 
-
-    print('------------------------------');
-    runApp(MyApp());
+    runApp(Phoenix(child: MyApp()));
   });
 }
 
@@ -47,6 +46,7 @@ class MyApp extends StatelessWidget {
            iconColor: Colors.white,
            titleTextStyle: TextStyle(
              fontSize: 16.0,
+             color: Colors.white,
              fontWeight: FontWeight.bold,
            )
          ),
@@ -68,10 +68,9 @@ class MyApp extends StatelessWidget {
         )
       ),
       translations: AppLocalization(),
-      locale: const Locale('en', 'US'),
-      //for setting localization strings
-      fallbackLocale: const Locale('ar', 'AA'),
-      title: 'co_name'.tr,
+      locale:GetStorage().read('lang')==true||GetStorage().read('lang')==null ? Locale('en', 'US'):Locale('ar','AA'),
+      fallbackLocale:  const Locale('en', 'US'),
+       title: 'Dewan Al-Benaa Company'.tr,
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.initialRoute,
       getPages: AppRoutes.pages,

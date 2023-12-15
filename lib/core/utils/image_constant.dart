@@ -42,10 +42,10 @@ class ImageConstant {
   ];
   static List<String> carousel_sliders = [
   'assets/images/chamber_of_commerce/DSCN7784.JPG',
-  'assets/images/chamber_of_commerce/DSCN8559.JPG',
-  'assets/images/jubail_insulators/991d4386-0386-45fa-bda7-9155b4a81ab7.jpg',
-  'assets/images/light_the_racket/DSCN7103.JPG',
-  'assets/images/the_cultural_center/DSCN3327.JPG',
+  'assets/images/chamber_of_commerce/0.JPG',
+  'assets/images/jubail_insulators/0.jpg',
+  'assets/images/light_the_racket/0.JPG',
+  'assets/images/the_cultural_center/0.JPG',
   ];
   static List<String> projectsFiles = [
     'assets/images/al_shabili/',

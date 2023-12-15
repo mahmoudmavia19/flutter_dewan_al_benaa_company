@@ -6,54 +6,63 @@ import 'package:dewan_al_benaa_company/widgets/custom_drawable.dart';
 import 'package:dewan_al_benaa_company/widgets/footer_app_bar.dart';
 import 'package:flutter/material.dart';
 
-class ServicesScreen extends GetWidget<ServicesController> {
+import '../home_screen/controller/home_controller.dart';
 
+class ServicesScreen extends GetWidget<ServicesController> {
   @override
   Widget build(BuildContext context) {
     return SelectionArea(
       child: Scaffold(
         drawer: CustomDrawable(),
-        body:SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        height: 300.0,width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          image: DecorationImage(image: AssetImage(ImageConstant.services),fit: BoxFit.cover,opacity: 0.6),
-                        ),
-                        child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Services'.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 36.0),),
-                                SizedBox(height: 20.0,),
-                                Row(
-                                  children: [
-                                    Text('Home  /'.tr,style: TextStyle(color: Colors.white70,fontWeight: FontWeight.bold,fontSize: 18.0),),
-                                    Text('  Services'.tr,style: TextStyle(color: Colors.blueAccent,fontWeight: FontWeight.bold,fontSize: 18.0),),
-                                  ],
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                ),
-                              ],
-                            )
-                        ),
+        body:Stack(
+           children: [
+             NotificationListener<ScrollNotification>(
+               onNotification: (notification) {
+                 Get.find<HomeController>().appBarUpdate(notification);
+                 return true;
+               },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 300.0,width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        image: DecorationImage(image: AssetImage(ImageConstant.services),fit: BoxFit.cover,opacity: 0.6),
                       ),
-                      ServicesItem(),
-                    ],
-                  ),
-                  CustomAppBar(),
-                ],
+                      child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Services'.tr,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 36.0),),
+                              SizedBox(height: 20.0,),
+                              Row(
+                                children: [
+                                  Text('Home'.tr,style: TextStyle(color: Colors.white70,fontWeight: FontWeight.bold,fontSize: 18.0),),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Text('/', style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18.0),),
+                                  ),
+                                  Text('Services'.tr,style: TextStyle(color: Colors.blueAccent,fontWeight: FontWeight.bold,fontSize: 18.0),),
+                                ],
+                                mainAxisAlignment: MainAxisAlignment.center,
+                              ),
+                            ],
+                          )
+                      ),
+                    ),
+                    ServicesItem(),
+                    SizedBox(height: 20.0,),
+                    FooterAppBar()
+                  ],
+                ),
               ),
-              SizedBox(height: 20.0,),
-              FooterAppBar()
-            ],
-          ),
+            ),
+            CustomAppBar(),
+          ],
         ),
       ),
     );

@@ -5,13 +5,20 @@ import '../presentation/home_screen/controller/home_controller.dart';
 import '../presentation/projects_screen/controller/projects_controller.dart';
 
 class CustomAppBar extends  GetWidget<HomeController> {
+
+  Function()? onChangeLang;
+
+
+  CustomAppBar({this.onChangeLang});
+
   @override
   Widget build(BuildContext context) {
     return Obx(() => Card(
       color: Colors.transparent,
       margin: EdgeInsets.zero,
      elevation: 0.0,
-     shape: RoundedRectangleBorder(),
+     clipBehavior: Clip.antiAliasWithSaveLayer,
+     shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.0),bottomRight: Radius.circular(20.0))),
       child: AnimatedContainer(
         duration: Duration(seconds: 1),
         decoration: BoxDecoration(
@@ -23,7 +30,7 @@ class CustomAppBar extends  GetWidget<HomeController> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(child: Image.asset(ImageConstant.logo2,height: 100.0),
+              child: Container(child: Image.asset(ImageConstant.logo2,),
               clipBehavior: Clip.antiAliasWithSaveLayer,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0)
@@ -39,7 +46,8 @@ class CustomAppBar extends  GetWidget<HomeController> {
               TextButton(onPressed: () {Get.toNamed(AppRoutes.projectsScreen);}, child: Text('Projects'.tr)),
               TextButton(onPressed: () {Get.toNamed(AppRoutes.contactScreen);}, child: Text('Contact Us'.tr)),
               TextButton(onPressed: () {
-                controller.changeLanguage();
+                controller.changeLanguage(context);
+                onChangeLang?.call();
               }, child: Text('language'.tr)),
 
             ],
